@@ -1,5 +1,3 @@
-console.log('yahh it working');
-
 let  wetherForm = document.querySelector('form')
 
 let search = document.querySelector('input')
