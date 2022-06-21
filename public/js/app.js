@@ -12,7 +12,7 @@ wetherForm.addEventListener('submit',(e)=>{
     location = location.toLowerCase();
     console.log(location);
     
-    fetch(`http://localhost:3000/weather?address=${location}`)
+    fetch(`/weather?address=${location}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

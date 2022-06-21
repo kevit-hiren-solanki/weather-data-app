@@ -5,6 +5,7 @@ const  geocode = require('./utils/geocoder')
 const forcase  = require('./utils/forecast')
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 // console.log(path.join(__dirname, '../../views'));
 
@@ -104,4 +105,6 @@ app.get('*',(req,res)=>{
 })
 
 
-app.listen(3000,() => {console.log('listening on port 3000')})
+app.listen(port, () => {
+  console.log("listening on port "+ port);
+});
