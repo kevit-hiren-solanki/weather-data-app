@@ -22,7 +22,7 @@ wetherForm.addEventListener('submit', async (e)=>{
            message1.textContent = res.error;
          } else {
            message1.innerHTML = `Temperature: ${res.temperature}`;
-           message2.innerHTML = `weather in ${(res.address).split(',')[0]} is ${res.weather}`;
+           message2.innerHTML = `it's feels like in ${(res.address).split(',')[0]} is ${res.weather}`;
            message3.innerHTML = `given location : ${res.address}`;
          }
        })
