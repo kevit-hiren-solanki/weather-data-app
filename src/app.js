@@ -22,12 +22,6 @@ hbs.registerPartials(partial_path);
 
 app.use(express.static(public_path));
 
-// app.get('',(req,res)=>{ 
-//     res.render(index,{
-//         title: 'Welcomee',
-
-//     })
-// })
 
 app.get('/',(req,res)=>{
     res.render('main',{
@@ -61,31 +55,25 @@ app.get('/weather',(req,res)=>{
         if(error) return res.send(error);
         else
         {
-        // console.log(location,latitude,longitude);
+        console.log(location,latitude,longitude);
         
         forcase(latitude,longitude,(error,forcaseresponse)=>{
             if(error) return console.error(error);
             else
             {       
-                //  console.log(forcaseresponse);
+                // console.log(location);
                 res.send({
-                    address: req.query.address,
-                    latitude: latitude,
-                    longitude:longitude,
-                    temperature:forcaseresponse.temperature,
-                    weather :  forcaseresponse.weather
-                })
+                  address: location,
+                  latitude: latitude,
+                  longitude: longitude,
+                  temperature: forcaseresponse.temperature,
+                  weather: forcaseresponse.weather,
+                });
             }
             })
     }
     })
-    // geocode(address,(error,{location,latitude,longitude})=>{
-    //     console.log(location,latitude,longitude)
-    //     if(error) return console.error(error);
    
-    
-      
-// })
 })
 
 app.get('/help/*',(req,res)=>{  

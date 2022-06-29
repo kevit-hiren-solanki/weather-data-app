@@ -1,3 +1,4 @@
+// const axios  = require('axios');
 let  wetherForm = document.querySelector('form')
 
 let search = document.querySelector('input')
@@ -6,27 +7,27 @@ let message2 = document.getElementById("message-2");
 let message3 = document.getElementById("message-3");
 
 message1.textContent = 'Loading...';
-wetherForm.addEventListener('submit',(e)=>{
+
+wetherForm.addEventListener('submit', async (e)=>{
     e.preventDefault();
     let  location   = search.value;
     location = location.toLowerCase();
-    console.log(location);
-    
-    fetch(`/weather?address=${location}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.error) {
-           message1.textContent = data.error;
-        } else {
-            message1.innerHTML = `Temperature: ${data.temperature}`
-            message3.innerHTML = `given location : ${data.address}`
-            message2.innerHTML = `weather in ${data.address} is ${data.weather}`;
-        //   console.log(data.address);
-        //   console.log(data.temperature);
-        //   console.log(data.weather);
-        }
-      }).catch((err) => {
-        message1.textContent = `please enter valid address: ${err.message}`;
-    })
-})
+    console.log(location);  
+    // loading(location);
+    await fetch(`/weather?address=${location}`)
+       .then((res) => res.json())
+       .then((res) => {
+         console.log(res);
+         if (res.error) {
+           message1.textContent = res.error;
+         } else {
+           message1.innerHTML = `Temperature: ${res.temperature}`;
+           message2.innerHTML = `weather in ${(res.address).split(',')[0]} is ${res.weather}`;
+           message3.innerHTML = `given location : ${res.address}`;
+         }
+       })
+       .catch((err) => {
+         message1.textContent = `please enter valid address: ${err.message}`;
+       });    
+
+  })
