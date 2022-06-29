@@ -13,7 +13,7 @@ const public_path  = path.join(__dirname, '../public');
 
 const  viewpath  = path.join(__dirname, '/templates')
 const partial_path  = path.join(__dirname, '/templates/patials')
-// console.log()
+
 
 app.set('view engine','hbs')
 app.set('views',viewpath);
